@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>ORDER KITCHEN</h1>
+<h2>Choose your options</h2>
+<div class="services">
+  <div class="service">
+    <h3>Lighting</h3>
+    <div class="radio-buttons">
+      <div class="radio"><label><input type="radio" name="lighting" id="lighting_01">to top</label></div>
+      <div class="radio"><label><input type="radio" name="lighting" id="lighting_02">to bottom</label></div>
+    </div>
+    <label><input type="checkbox" oninput="lighting.setIsChosen(this.checked)">Add to order</label>
+  </div>
+  <div class="service">
+    <h3>Table</h3>
+    <div class="radio-buttons">
+      <div class="radio"><label><input type="radio" name="table" id="table_01">Bar counter</label></div>
+      <div class="radio"><label><input type="radio" name="table" id="table_02">Kitchen island</label></div>
+      <div class="radio"><label><input type="radio" name="table" id="table_03">Round table</label></div>
+      <div class="radio"><label><input type="radio" name="table" id="table_04">Square table</label></div>
+    </div>
+    <label><input type="checkbox" oninput="table.setIsChosen(this.checked)">Add to order</label>
+  </div>
+  <div class="service">
+    <h3>Backsplash</h3>
+    <div class="radio-buttons">
+      <div class="radio"><label><input type="radio" name="backsplash" id="backsplash_01">Glass</label></div>
+      <div class="radio"><label><input type="radio" name="backsplash" id="backsplash_02">Wooden</label></div>
+      <div class="radio"><label><input type="radio" name="backsplash" id="backsplash_03">Ceramic</label></div>
+    </div>
+    <label><input type="checkbox" oninput="backsplash.setIsChosen(this.checked)">Add to order</label>
+  </div>
+</div>
+<button onclick="composite.getCheckedQuantity()">GET QUANTITY OF CHOSEN OPTIONS</button>
+<div id="quantity"></div>
+<script type="module">
+  import { lighting } from "./Lighting.mjs";
+  import { table } from "./Table.mjs";
+  import { backsplash } from "./Backsplash.mjs";
+  import { Composite } from "./Composite.mjs";
+
+  window.lighting = lighting
+  window.table = table
+  window.backsplash = backsplash
+
+  window.composite = new Composite([lighting, table, backsplash])
+</script>
+</body>
+</html>
